@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import BaseURL from '../../BaseURL.js'
+import img1 from "../../assets/Images/img1.jpg"
 
 
 function AllOrders() {
@@ -26,7 +27,7 @@ function AllOrders() {
   },[])
 
 const showDetalisItem = ((item) => {
-  navigate(`/Admin/Orders/${item._id}`, {
+  navigate(`/Admin/Orders/123`, {
       state: {
           item
       }
@@ -46,7 +47,7 @@ const deleteOrder = (id)=>{
                   <Col sm="12">
                     <div key={index} className='cart-item-body my-2 px-1 d-flex'>
 
-                        <img className='rounded-3' width="160px" height="197px" src={item.cartItems[0].product.imageCover} alt="" onClick={() => showDetalisItem(item)}/>
+                        <img className='rounded-3' width="160px" height="197px" src={item.cartItems[0].product ? item.cartItems[0].product.imageCover : img1 } alt="" onClick={() => showDetalisItem(item)}/>
                         
                         <div className='w-100'>
                             <Row className='justify-content-between mx-1'>

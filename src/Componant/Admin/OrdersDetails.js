@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useLocation } from 'react-router';
+import img1 from "../../assets/Images/img1.jpg"
 
 function OrdersDetails() {
     
@@ -34,24 +35,31 @@ function OrdersDetails() {
                 singleProduct.cartItems.map((item,index)=>{
                     return(
                         <>
-                            <div className="row m-0" key={index} id={item.product.id}> 
+                        {
+                            item.product?
+                            
+                            <div className="row m-0" key={index} > 
                                 <div className="col-lg-2 col-md-2 d-flex">
                                     <sup className=" fw-bold">{index+1}</sup>
-                                    <img className="w-100" src={item.product.imageCover} alt=""/>
+                                    <img className="w-100" src={item.product ? item.product.imageCover : img1 } alt=""/>
                                 </div>
 
                                 <div className="col-lg-9 col-md-8">
-                                    <h6>Product Name : {item.product.title}</h6>
+                                    <h6>Product Name : { item.product ?item.product.title : ""}</h6>
                                     <div>
                                         <span>
-                                            <span className="mx-2">Product Quantity : {item.quantity}</span>
+                                            <span className="mx-2">Product Quantity : {item.product ?item.quantity:""}</span>
                                         </span>
 
                                     </div>
                                 </div>
-                                <span className="col-lg-1 col-md-2 fw-bold fs-5">EGP : {item.price }</span>
+                                <span className="col-lg-1 col-md-2 fw-bold fs-5">EGP : {item.product ? item.price :"" }</span>
 
                             </div>
+
+                            :"this product was deleted by admin"
+                        }
+
                             
                             <hr/>
                         </>

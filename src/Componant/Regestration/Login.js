@@ -21,7 +21,7 @@ export default function Login() {
     const onSubmit =async userData => {
         try {
             const response = await BaseURL.post('/api/auth/login', userData)
-            console.log(response);
+            // console.log(response);
             localStorage.setItem("token",response.data.token)
             localStorage.setItem("role",response.data.data.role)
             localStorage.setItem("userId",response.data.data._id)

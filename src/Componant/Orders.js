@@ -4,12 +4,13 @@ import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import img1 from "../assets/Images/img1.jpg"
 
 // Orders.js
 export default function Orders(){
     const token = localStorage.getItem("token");
     const [allOrders , setAllOrders]= useState([])
-    console.log(allOrders);
+    // console.log(allOrders);
     const navigate = useNavigate();
 
     const getProductFromCart = async ()=>{
@@ -50,6 +51,7 @@ export default function Orders(){
     return(
         <>
             <div className="row mx-auto pt-3 ">
+
                 {
                 allOrders.map((item , index)=>{
                     return(
@@ -57,9 +59,9 @@ export default function Orders(){
                             <div key={item.id} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3 ">
                                 <hr/>
                                 <div className="" >
-                                    <img src={item.cartItems[0].product? item.cartItems[0].product.imageCover:""} className="card-img-top " style={{"height": "15rem"}}
+                                    <img src={item.cartItems[0].product? item.cartItems[0].product.imageCover:img1} className="card-img-top " style={{"height": "15rem"}}
                                     alt="" 
-                                    onClick={() => showDetalisItem(item)}/>
+                                    onClick={() => showDetalisItem(item)}/> 
                                     <div className="card-body">
                                         <div className="">
                                             <p className="card-text m-0">Order num {index + 1}</p>
